@@ -1,24 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jsilance <jsilance@student.s19.be>         +#+  +:+       +#+        */
+/*   By: jsilance <jsilance@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/02 00:17:10 by jsilance          #+#    #+#             */
-/*   Updated: 2020/12/02 01:15:24 by jsilance         ###   ########.fr       */
+/*   Created: 2019/10/07 21:18:15 by jsilance          #+#    #+#             */
+/*   Updated: 2019/11/11 14:46:36 by jsilance         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "main.h"
+#include "libft.h"
 
-int	main(void)
+char	*ft_strdup(const char *s)
 {
-	char	*str;
-	int		ret;
-	
-	str = NULL;
-	if ((ret = get_next_line(0, &str)) < 0)
-		write(1, str, ft_strlen(str));
-	return (0); 
+	char	*ptr;
+
+	if (!(ptr = malloc(sizeof(char) * (ft_strlen(s) + 1))))
+		return (NULL);
+	if (s)
+		ft_memcpy(ptr, s, ft_strlen(s));
+	ptr[ft_strlen(s)] = '\0';
+	return ((char *)ptr);
 }

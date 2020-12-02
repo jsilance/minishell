@@ -1,24 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_toupper.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jsilance <jsilance@student.s19.be>         +#+  +:+       +#+        */
+/*   By: jsilance <jsilance@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/02 00:17:10 by jsilance          #+#    #+#             */
-/*   Updated: 2020/12/02 01:15:24 by jsilance         ###   ########.fr       */
+/*   Created: 2019/10/07 16:52:53 by jsilance          #+#    #+#             */
+/*   Updated: 2019/10/09 13:47:31 by jsilance         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "main.h"
-
-int	main(void)
+int	ft_toupper(int c)
 {
-	char	*str;
-	int		ret;
-	
-	str = NULL;
-	if ((ret = get_next_line(0, &str)) < 0)
-		write(1, str, ft_strlen(str));
-	return (0); 
+	return ((96 < c && c < 123) ? c - 32 : c);
 }

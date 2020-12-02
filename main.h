@@ -1,24 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   main.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jsilance <jsilance@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/02 00:17:10 by jsilance          #+#    #+#             */
-/*   Updated: 2020/12/02 01:15:24 by jsilance         ###   ########.fr       */
+/*   Created: 2020/12/02 00:41:47 by jsilance          #+#    #+#             */
+/*   Updated: 2020/12/02 01:12:50 by jsilance         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "main.h"
+#ifndef MAIN_H
 
-int	main(void)
-{
-	char	*str;
-	int		ret;
-	
-	str = NULL;
-	if ((ret = get_next_line(0, &str)) < 0)
-		write(1, str, ft_strlen(str));
-	return (0); 
-}
+# define MAIN_H
+
+# include <unistd.h>
+# include <string.h>
+# include <stdlib.h>
+# include <limits.h>
+# include "libft/libft.h"
+# include "gnl/get_next_line.h"
+
+
+
+#endif

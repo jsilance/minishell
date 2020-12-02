@@ -1,24 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_lstadd_front_bonus.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jsilance <jsilance@student.s19.be>         +#+  +:+       +#+        */
+/*   By: jsilance <jsilance@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/02 00:17:10 by jsilance          #+#    #+#             */
-/*   Updated: 2020/12/02 01:15:24 by jsilance         ###   ########.fr       */
+/*   Created: 2019/10/10 04:14:57 by jsilance          #+#    #+#             */
+/*   Updated: 2019/11/11 14:24:47 by jsilance         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "main.h"
+#include "libft.h"
 
-int	main(void)
+void	ft_lstadd_front(t_list **alst, t_list *new)
 {
-	char	*str;
-	int		ret;
-	
-	str = NULL;
-	if ((ret = get_next_line(0, &str)) < 0)
-		write(1, str, ft_strlen(str));
-	return (0); 
+	if (!alst || !new)
+		return ;
+	new->next = *alst;
+	*alst = new;
 }

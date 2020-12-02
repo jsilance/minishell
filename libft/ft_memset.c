@@ -1,24 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jsilance <jsilance@student.s19.be>         +#+  +:+       +#+        */
+/*   By: jsilance <jsilance@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/02 00:17:10 by jsilance          #+#    #+#             */
-/*   Updated: 2020/12/02 01:15:24 by jsilance         ###   ########.fr       */
+/*   Created: 2019/10/07 09:38:49 by jsilance          #+#    #+#             */
+/*   Updated: 2019/11/01 17:51:38 by jsilance         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "main.h"
+#include "libft.h"
 
-int	main(void)
+void	*ft_memset(void *b, int c, size_t len)
 {
-	char	*str;
-	int		ret;
-	
-	str = NULL;
-	if ((ret = get_next_line(0, &str)) < 0)
-		write(1, str, ft_strlen(str));
-	return (0); 
+	unsigned char	*ptr;
+
+	if (b)
+	{
+		ptr = b;
+		while (len-- > 0)
+			*ptr++ = c;
+		return (b);
+	}
+	return (NULL);
 }

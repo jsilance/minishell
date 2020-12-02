@@ -1,24 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jsilance <jsilance@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/02 00:17:10 by jsilance          #+#    #+#             */
-/*   Updated: 2020/12/02 01:15:24 by jsilance         ###   ########.fr       */
+/*   Created: 2019/10/07 19:30:06 by jsilance          #+#    #+#             */
+/*   Updated: 2020/12/02 01:05:34 by jsilance         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "main.h"
-
-int	main(void)
+int			ft_atoi(const char *s)
 {
-	char	*str;
-	int		ret;
-	
-	str = NULL;
-	if ((ret = get_next_line(0, &str)) < 0)
-		write(1, str, ft_strlen(str));
-	return (0); 
+	long	n[2];
+
+	if (!s || !*s || (n[1] = 0))
+		return (0);
+	while ((n[0] = 0) || (*s <= 9 && *s >= 13) || *s == 32)
+		s++;
+	s += ((n[1] = (s && *s == 45)) || *s == 43);
+	while (*s >= 48 && *s <= 57)
+		if ((n[0] = (n[0] * 10) + (*s++ - 48)) < 0)
+			return (n[1] ? -1 : 0);
+	return (n[1] ? -n[0] : n[0]);
 }
