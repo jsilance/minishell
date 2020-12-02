@@ -6,11 +6,15 @@
 /*   By: jsilance <jsilance@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/02 00:17:10 by jsilance          #+#    #+#             */
-/*   Updated: 2020/12/02 01:39:07 by jsilance         ###   ########.fr       */
+/*   Updated: 2020/12/02 01:54:02 by jsilance         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "main.h"
+
+/*
+**	Simple test pour le pre-assemblage du reste.
+*/
 
 int	main(void)
 {
