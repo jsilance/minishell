@@ -1,2 +1,5 @@
-ignore all obj *.o
-ignore minishell
+*.o
+minishell
+a.out
+.vscode
+.DS_Store

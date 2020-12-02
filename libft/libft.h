@@ -6,7 +6,7 @@
 /*   By: jsilance <jsilance@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/08 22:07:46 by jsilance          #+#    #+#             */
-/*   Updated: 2020/12/02 01:21:28 by jsilance         ###   ########.fr       */
+/*   Updated: 2020/12/02 17:35:11 by jsilance         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,5 +69,6 @@ void		ft_lstclear(t_list **lst, void (*del)(void*));
 void		ft_lstiter(t_list *lst, void (*f)(void *));
 t_list		*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 char		*ft_itoa_base(int n, char *charset);
+char		**ft_duty_free(char **ptr_ptr, int words);
 
 #endif

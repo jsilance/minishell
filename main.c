@@ -6,11 +6,23 @@
 /*   By: jsilance <jsilance@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/02 00:17:10 by jsilance          #+#    #+#             */
-/*   Updated: 2020/12/02 03:02:01 by jsilance         ###   ########.fr       */
+/*   Updated: 2020/12/02 17:46:42 by jsilance         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "main.h"
+
+/*
+**	Initialise every variables of the struct to 0 for overriding some garbage
+**	values.
+*/
+
+static void	struct_init(t_sarg *t)
+{
+	t->input_str = NULL;
+	t->arg_lst = NULL;
+	t->ret_val = 0;
+}
 
 /*
 **	Simple test pour le pre-assemblage du reste.
@@ -18,14 +30,23 @@
 
 int	main(void)
 {
-	char	*str;
+	t_sarg	t;
+	t_list	*ptr;
 	int		ret;
-
-	str = NULL;
+	
+	struct_init(&t);
 	while (!0)
-		if ((ret = get_next_line(0, &str)) > 0)
-			write(1, str, ft_strlen(str));
-		else
-			break;
+	{
+		write(1, ">>", 2);
+		ret = get_next_line(0, &t.input_str);
+		strtolst(&t);
+		ptr = t.arg_lst;
+		while (ptr)
+		{
+			ft_putendl_fd(ptr->content, 1);
+			ptr = ptr->next;
+		}
+		ft_lstclear(&t.arg_lst, free);
+	}
 	return (0);
 }

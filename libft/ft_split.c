@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jsilance <jsilance@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jsilance <jsilance@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/09 01:55:22 by jsilance          #+#    #+#             */
-/*   Updated: 2019/11/18 23:07:11 by jsilance         ###   ########.fr       */
+/*   Updated: 2020/12/02 17:34:42 by jsilance         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static int	count_words(char const *str, char c)
 	return (count);
 }
 
-static char	**ft_duty_free(char **ptr_ptr, int words)
+char		**ft_duty_free(char **ptr_ptr, int words)
 {
 	int	i;
 
