@@ -6,7 +6,7 @@
 /*   By: jsilance <jsilance@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/02 00:17:10 by jsilance          #+#    #+#             */
-/*   Updated: 2020/12/02 17:46:42 by jsilance         ###   ########.fr       */
+/*   Updated: 2020/12/02 21:35:28 by jsilance         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,9 @@ int	main(void)
 		ptr = t.arg_lst;
 		while (ptr)
 		{
-			ft_putendl_fd(ptr->content, 1);
+			write(1, "[", 1);
+			ft_putstr_fd(ptr->content, 1);
+			write(1, "]\n", 2);
 			ptr = ptr->next;
 		}
 		ft_lstclear(&t.arg_lst, free);

@@ -6,7 +6,7 @@
 /*   By: jsilance <jsilance@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/02 00:41:47 by jsilance          #+#    #+#             */
-/*   Updated: 2020/12/02 18:36:11 by jsilance         ###   ########.fr       */
+/*   Updated: 2020/12/02 21:24:38 by jsilance         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@
 # include <string.h>
 # include <stdlib.h>
 # include <limits.h>
+
+# include <stdio.h>
 
 # include "libft/libft.h"
 # include "gnl/get_next_line.h"
