@@ -1,0 +1,2 @@
+ignore all obj *.o
+ignore minishell
