@@ -6,7 +6,7 @@
 #    By: jsilance <jsilance@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/12/01 23:48:59 by jsilance          #+#    #+#              #
-#    Updated: 2020/12/02 01:12:12 by jsilance         ###   ########.fr        #
+#    Updated: 2020/12/02 01:27:24 by jsilance         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,10 +15,8 @@ NAME = minishell
 
 SRC =	main.c libft/ft_atoi.c libft/ft_bzero.c libft/ft_calloc.c \
 		libft/ft_isalnum.c libft/ft_isalpha.c libft/ft_isascii.c \
-		libft/ft_isdigit.c libft/ft_isprint.c libft/ft_memccpy.c \
 		libft/ft_memchr.c libft/ft_memcmp.c libft/ft_memcpy.c \
 		libft/ft_isdigit.c libft/ft_isprint.c libft/ft_memccpy.c \
-		libft/ft_memchr.c libft/ft_memcmp.c libft/ft_memcpy.c \
 		libft/ft_memmove.c libft/ft_memset.c libft/ft_strchr.c \
 		libft/ft_strdup.c libft/ft_strlcat.c libft/ft_strlcpy.c \
 		libft/ft_strlen.c libft/ft_strncmp.c libft/ft_strnstr.c \
@@ -31,9 +29,10 @@ SRC =	main.c libft/ft_atoi.c libft/ft_bzero.c libft/ft_calloc.c \
 		libft/ft_lstadd_back_bonus.c libft/ft_lstdelone_bonus.c \
 		libft/ft_lstclear_bonus.c libft/ft_lstiter_bonus.c \
 		libft/ft_lstmap_bonus.c libft/ft_lstlast_bonus.c libft/ft_itoa_base.c \
+		gnl/get_next_line.c \
 
 
-FLAGS =	-WALL -Wextra -Werror
+FLAGS =	-Wall -Wextra -Werror
 
 OBJ =	$(SRC:.c=.o)
 
@@ -42,7 +41,7 @@ OBJ =	$(SRC:.c=.o)
 
 all:	${NAME}
 
-${NAME}: $OBJ
+${NAME}: ${OBJ}
 		@echo "Compilation..."
 		@gcc ${FLAGS} ${OBJ} -o ${NAME}
 		@echo "Compilation complete!"

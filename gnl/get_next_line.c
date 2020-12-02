@@ -6,7 +6,7 @@
 /*   By: jsilance <jsilance@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/02 00:35:49 by jsilance          #+#    #+#             */
-/*   Updated: 2020/12/02 00:40:58 by jsilance         ###   ########.fr       */
+/*   Updated: 2020/12/02 01:28:16 by jsilance         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,25 +30,6 @@ static char	*ft_strstock(char *ptr, char str)
 	new_ptr[i[1]] = '\0';
 	free(ptr);
 	return (new_ptr);
-}
-
-static char	*ft_strdup(const char *s)
-{
-	char	*ptr;
-	int		i;
-
-	i = 0;
-	if (!s)
-		return (NULL);
-	while (s[i])
-		i++;
-	if (!(ptr = malloc(sizeof(char) * (i + 1))))
-		return (NULL);
-	i = -1;
-	while (s[++i])
-		ptr[i] = s[i];
-	ptr[i] = '\0';
-	return (ptr);
 }
 
 static int	str_liner(char *tmp, char temp[OPEN_MAX][BUFFER_SIZE + 1],
