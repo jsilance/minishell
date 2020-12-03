@@ -1,40 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.h                                             :+:      :+:    :+:   */
+/*   error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jsilance <jsilance@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/02 00:41:47 by jsilance          #+#    #+#             */
-/*   Updated: 2020/12/03 05:42:06 by jsilance         ###   ########.fr       */
+/*   Created: 2020/12/03 02:00:40 by jsilance          #+#    #+#             */
+/*   Updated: 2020/12/03 05:34:08 by jsilance         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MAIN_H
+#include "../main.h"
 
-# define MAIN_H
-
-# include <unistd.h>
-# include <string.h>
-# include <stdlib.h>
-# include <limits.h>
-
-# include <stdio.h>
-
-# include "libft/libft.h"
-# include "gnl/get_next_line.h"
-
-typedef struct	s_sarg
+int ft_error(int error, int ret_val)
 {
-	char	*input_str;
-
-	t_list	*arg_lst;
-
-	int		ret_val;
-}				t_sarg;
-
-void			strtolst(t_sarg *t);
-int				parser(t_sarg *t);
-int				ft_error(int error, int ret_val);
-
-#endif
+    if (error == 1)
+        ft_putendl_fd("Unknown command!", 2);
+    return (ret_val);
+}
