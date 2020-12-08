@@ -6,7 +6,7 @@
 /*   By: jsilance <jsilance@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/02 00:17:10 by jsilance          #+#    #+#             */
-/*   Updated: 2020/12/03 05:49:35 by jsilance         ###   ########.fr       */
+/*   Updated: 2020/12/08 20:50:20 by jsilance         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,14 +43,15 @@ int			main(void)
 		ptr = t.arg_lst;
 		if (parser(&t) == 127)
 			break;
-		// while (ptr)             //Sorte de echo
-		// {
-		// 	write(1, "[", 1);
-		// 	ft_putstr_fd(ptr->content, 1);
-		// 	write(1, "]\n", 2);
-		// 	ptr = ptr->next;
-		// }
+		while (ptr)             //Sorte de echo
+		{
+			write(1, "[", 1);
+			ft_putstr_fd(ptr->content, 1);
+			write(1, "]\n", 2);
+			ptr = ptr->next;
+		}
 		ft_lstclear(&t.arg_lst, free);
+		free(t.input_str);
 	}
 	ft_lstclear(&t.arg_lst, free);
 	return (0);

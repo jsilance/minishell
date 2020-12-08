@@ -6,7 +6,7 @@
 /*   By: jsilance <jsilance@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/03 01:53:26 by jsilance          #+#    #+#             */
-/*   Updated: 2020/12/03 05:50:12 by jsilance         ###   ########.fr       */
+/*   Updated: 2020/12/08 20:22:54 by jsilance         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,8 @@ static int	command_chekcer(char *str)
 		if (!ft_strncmp("exit", str, len))
 			return (127);
 	}
-	return (ft_error(1, -1));
+	// return (ft_error(1, -1));
+	return (1);
 }
 
 /*
