@@ -6,7 +6,7 @@
 /*   By: jsilance <jsilance@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/02 17:46:21 by jsilance          #+#    #+#             */
-/*   Updated: 2020/12/03 00:00:26 by jsilance         ###   ########.fr       */
+/*   Updated: 2020/12/08 21:13:50 by jsilance         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,17 @@ static void	str_store(t_sarg *t, int j, int i, int sep)
 			i, sep)));
 }
 
+static int	is_double_char(t_sarg *t, int i)
+{
+	if ((t->input_str[i] == '>' && t->input_str[i + 1] == '>') ||
+		(t->input_str[i] == '<' && t->input_str[i + 1] == '<') ||
+		(t->input_str[i] == '|' && t->input_str[i + 1] == '|') ||
+		(t->input_str[i] == '@' && t->input_str[i + 1] == '@') ||
+		(t->input_str[i] == '&' && t->input_str[i + 1] == '&'))
+		return (1);
+	return (0);
+}
+
 /*
 **	nedd to call error function when " or ' is not closed.
 */
@@ -38,7 +49,7 @@ static void	str_cut(t_sarg *t, int i, int j)
 	{
 		if (ft_strchr(" ><|;", t->input_str[i]))
 		{
-			if (t->input_str[i] == '>' && t->input_str[i + 1] == '>')
+			if (is_double_char(t, i))
 				str_store(t, j, i++, 2);
 			else
 				str_store(t, j, i, 1);
@@ -49,8 +60,6 @@ static void	str_cut(t_sarg *t, int i, int j)
 			i++;
 			while (t->input_str[i] && !ft_strchr("\"'", t->input_str[i]))
 				i++;
-			// if (!t->input_str[i])
-				// call error "not closed"
 			str_store(t, j, i + 1, 1);
 			j = i + 1;
 		}

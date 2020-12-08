@@ -6,7 +6,7 @@
 /*   By: jsilance <jsilance@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/02 00:17:10 by jsilance          #+#    #+#             */
-/*   Updated: 2020/12/08 20:50:20 by jsilance         ###   ########.fr       */
+/*   Updated: 2020/12/08 20:59:20 by jsilance         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,5 +54,6 @@ int			main(void)
 		free(t.input_str);
 	}
 	ft_lstclear(&t.arg_lst, free);
+	free(t.input_str);
 	return (0);
 }
