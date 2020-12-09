@@ -6,7 +6,7 @@
 #    By: jsilance <jsilance@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/12/01 23:48:59 by jsilance          #+#    #+#              #
-#    Updated: 2020/12/03 02:19:16 by jsilance         ###   ########.fr        #
+#    Updated: 2020/12/09 03:03:25 by jsilance         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,10 @@ SRC =	main.c libft/ft_atoi.c libft/ft_bzero.c libft/ft_calloc.c \
 		libft/ft_lstclear_bonus.c libft/ft_lstiter_bonus.c \
 		libft/ft_lstmap_bonus.c libft/ft_lstlast_bonus.c libft/ft_itoa_base.c \
 		gnl/get_next_line.c lexer/main_lexer.c error/error.c \
-		parser/main_parser.c \
+		parser/main_parser.c libft/ft_strcmp.c cmd_cl/ft_cmdlstadd_back.c \
+		cmd_cl/ft_cmdlstadd_front.c cmd_cl/ft_cmdlstclear.c \
+		cmd_cl/ft_cmdlstdelone.c cmd_cl/ft_cmdlstiter.c \
+		cmd_cl/ft_cmdlstlast.c cmd_cl/ft_cmdlstnew.c cmd_cl/ft_cmdlstsize.c \
 
 
 FLAGS =	-Wall -Wextra -Werror

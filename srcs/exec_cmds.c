@@ -15,7 +15,7 @@ int		exec_builtin(t_list *envs, char *line)
 	char **argv;
 
 	argv = get_argv(envs, line);
-	if (!strncmp(argv[0], "echo", ft_strlen(argv[0])))
+	if (!strncmp(argv[0], "echo", ft_strlen(argv[0]))) // si argv == ech alors strncmp ne check que 3 char, c'est donc une commande valide
 		cmd_echo(envs, argv);
 	else if (!strncmp(argv[0], "cd", ft_strlen(argv[0])))
 		cmd_cd(envs, argv);

@@ -6,7 +6,7 @@
 /*   By: jsilance <jsilance@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/08 22:07:46 by jsilance          #+#    #+#             */
-/*   Updated: 2020/12/02 17:35:11 by jsilance         ###   ########.fr       */
+/*   Updated: 2020/12/09 02:08:10 by jsilance         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ void		ft_putchar_fd(char c, int fd);
 void		ft_putstr_fd(char *s, int fd);
 void		ft_putendl_fd(char *s, int fd);
 void		ft_putnbr_fd(int n, int fd);
+int			ft_strcmp(const char *s1, const char *s2);
 
 t_list		*ft_lstnew(void *content);
 void		ft_lstadd_front(t_list **alst, t_list *new);
