@@ -6,7 +6,7 @@
 /*   By: jsilance <jsilance@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/03 01:53:26 by jsilance          #+#    #+#             */
-/*   Updated: 2020/12/15 04:37:04 by jsilance         ###   ########.fr       */
+/*   Updated: 2020/12/15 05:15:57 by jsilance         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,39 +62,32 @@ static int	chain_maker(t_sarg *t)
 	cmd_ptr = NULL;
 	while(ptr)
 	{
+		if (!ft_strcmp(ptr->content, ";") && (ptr = ptr->next))
+			continue ;
+		if (!ptr)
+			continue ;
+		printf("[%s]\n", ptr->content);
 		ft_cmd_lstadd_back(&t->cmd, ft_cmd_lstnew(NULL, NULL,
 			cmd_chekcer(ptr->content)));
 		cmd_ptr = ft_cmd_lstlast(t->cmd);
-		if (!(ptr = ptr->next))
-			break ;
-		if (ptr && cmd_ptr->cmd_index == 1 && !ft_strcmp(ptr->content, "-n"))
+		if (!(ptr = ptr->next) || !ft_strcmp(ptr->content, ";"))
+			continue ;
+		if (ptr && cmd_ptr->cmd_index == 1 && cmd_arg_check(ptr->content))
 		{
 			cmd_ptr->flags = ft_strdup(ptr->content);
-			if (!(ptr = ptr->next))
-				break ;
-		}
-		else if (ptr && !ft_strcmp(ptr->content, "|"))
-		{
-			cmd_ptr->pipe_next = 1;
-			if (!(ptr = ptr->next))
+			if (!(ptr = ptr->next) || !ft_strcmp(ptr->content, ";"))
 				break ;
 		}
 		cmd_ptr->str = ft_strdup(ptr->content);
-		if (!(ptr = ptr->next))
-			break ;
+		if (!(ptr = ptr->next) || !ft_strcmp(ptr->content, ";"))
+			continue ;
 		if (ptr && !ft_strcmp(ptr->content, "|"))
 		{
 			cmd_ptr->pipe_next = 1;
 			if (!(ptr = ptr->next))
 				break ;
 		}
-		// if (ptr && ptr->content != ";" && ptr->content != "|")
-		// {
-		// 	cmd_ptr->cmd_index = -1;
-		// 	while(ptr && ptr->content != ";")
-		// 		if (!(ptr = ptr->next))
-		// 			break ;
-		// }
+		// security if too much of arguments
 		if (!(ptr = ptr->next))
 			break ;
 	}
