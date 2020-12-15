@@ -6,7 +6,7 @@
 /*   By: jsilance <jsilance@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/10 23:28:38 by jsilance          #+#    #+#             */
-/*   Updated: 2020/12/09 03:48:30 by jsilance         ###   ########.fr       */
+/*   Updated: 2020/12/15 03:19:35 by jsilance         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	ft_cmd_lstclear(t_cmd_lst **lst, void (*del)(void*))
 	while (ptr)
 	{
 		tmp = ptr->next;
-		ft_lstdelone(ptr, (*del));
+		ft_cmd_lstdelone(ptr, (*del));
 		ptr = tmp;
 	}
 	*lst = NULL;

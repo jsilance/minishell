@@ -6,17 +6,20 @@
 /*   By: jsilance <jsilance@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/03 01:53:26 by jsilance          #+#    #+#             */
-/*   Updated: 2020/12/14 23:25:18 by jsilance         ###   ########.fr       */
+/*   Updated: 2020/12/15 04:37:04 by jsilance         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../main.h"
 
-/*
-**	Exit temporaire (pour exit sans leaks).
-*/
+static int	cmd_arg_check(char *str)
+{
+	if (!ft_strcmp("-n", str))
+		return (1);
+	return (0);
+}
 
-static int	command_chekcer(char *str)
+static int	cmd_chekcer(char *str)
 {
 	if (str)
 	{
@@ -50,19 +53,52 @@ static int	command_chekcer(char *str)
 **	cmd_index  6 --> help
 */
 
-static void	chain_maker(t_sarg *t)
+static int	chain_maker(t_sarg *t)
 {
-	t_list	*ptr;
-	int		index;
+	t_list		*ptr;
+	t_cmd_lst	*cmd_ptr;
 
 	ptr = t->arg_lst;
-	index = -1;
-	while (ptr)
+	cmd_ptr = NULL;
+	while(ptr)
 	{
-		ft_cmd_lstadd_back(t->cmd, ft_cmd_lstnew(ft_strdup(ptr->content), NULL,
-			command_chekcer(ptr->content)));
-		ptr = ptr->next;
+		ft_cmd_lstadd_back(&t->cmd, ft_cmd_lstnew(NULL, NULL,
+			cmd_chekcer(ptr->content)));
+		cmd_ptr = ft_cmd_lstlast(t->cmd);
+		if (!(ptr = ptr->next))
+			break ;
+		if (ptr && cmd_ptr->cmd_index == 1 && !ft_strcmp(ptr->content, "-n"))
+		{
+			cmd_ptr->flags = ft_strdup(ptr->content);
+			if (!(ptr = ptr->next))
+				break ;
+		}
+		else if (ptr && !ft_strcmp(ptr->content, "|"))
+		{
+			cmd_ptr->pipe_next = 1;
+			if (!(ptr = ptr->next))
+				break ;
+		}
+		cmd_ptr->str = ft_strdup(ptr->content);
+		if (!(ptr = ptr->next))
+			break ;
+		if (ptr && !ft_strcmp(ptr->content, "|"))
+		{
+			cmd_ptr->pipe_next = 1;
+			if (!(ptr = ptr->next))
+				break ;
+		}
+		// if (ptr && ptr->content != ";" && ptr->content != "|")
+		// {
+		// 	cmd_ptr->cmd_index = -1;
+		// 	while(ptr && ptr->content != ";")
+		// 		if (!(ptr = ptr->next))
+		// 			break ;
+		// }
+		if (!(ptr = ptr->next))
+			break ;
 	}
+	return (0);
 }
 
 /*
@@ -76,5 +112,5 @@ int			parser(t_sarg *t)
 	str = NULL;
 	if (t->arg_lst)
 		str = t->arg_lst->content;
-	return (command_chekcer(str));
+	return (chain_maker(t));
 }
