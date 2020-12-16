@@ -6,7 +6,7 @@
 /*   By: jsilance <jsilance@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/02 17:46:21 by jsilance          #+#    #+#             */
-/*   Updated: 2020/12/15 02:34:11 by jsilance         ###   ########.fr       */
+/*   Updated: 2020/12/15 23:06:49 by jsilance         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,12 +30,10 @@ static void	str_store(t_sarg *t, int j, int i, int sep)
 
 static int	is_double_char(t_sarg *t, int i)
 {
-	if ((t->input_str[i] == '>' && t->input_str[i + 1] == '>') ||
+	return ((t->input_str[i] == '>' && t->input_str[i + 1] == '>') ||
 		(t->input_str[i] == '<' && t->input_str[i + 1] == '<') ||
 		(t->input_str[i] == '|' && t->input_str[i + 1] == '|') ||
-		(t->input_str[i] == '&' && t->input_str[i + 1] == '&'))
-		return (1);
-	return (0);
+		(t->input_str[i] == '&' && t->input_str[i + 1] == '&'));
 }
 
 /*
