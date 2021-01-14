@@ -6,7 +6,7 @@
 /*   By: jsilance <jsilance@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/13 22:58:06 by jsilance          #+#    #+#             */
-/*   Updated: 2021/01/14 02:14:52 by jsilance         ###   ########.fr       */
+/*   Updated: 2021/01/14 02:30:24 by jsilance         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,7 @@ int		main()
     pipe(fd);
 	pid = fork();
 	printf("PID:[%d]\n", pid);
+	wait();
 	if (pid == 0)
 		s_pro_one(fd[1]);
 	else
