@@ -6,7 +6,7 @@
 /*   By: jsilance <jsilance@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/13 22:58:06 by jsilance          #+#    #+#             */
-/*   Updated: 2021/01/14 02:30:24 by jsilance         ###   ########.fr       */
+/*   Updated: 2021/01/15 00:11:02 by jsilance         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int		s_pro_two(int fd)
 	// str = NULL;
 	i = 0;
 	j = 1;
-	while (i <= 50)
+	while (i <= 10)
 	{
 		read(fd, &str, j);
 		// get_next_line(fd, &str);
@@ -58,14 +58,18 @@ int		s_pro_two(int fd)
 	return (0);
 }
 
-int		s_pro_one(int fd)
+int		s_pro_one(int pid, int fd)
 {
 	int		i;
+	int		count;
 	char	*str;
 	char	*strt;
 
 	i = 0;
-	while (i <= 50)
+	count = 0;
+	if (pid != 0)
+		i = 6;
+	while (count++ <= 5)
 	{
 		str = ft_itoa(i++);
 		write(fd, str, ft_strlen(str));
@@ -86,7 +90,11 @@ int		main()
 	printf("PID:[%d]\n", pid);
 	wait();
 	if (pid == 0)
-		s_pro_one(fd[1]);
+	{
+		pid = fork();
+		printf("PID:[%d]\n", pid);
+		s_pro_one(pid, fd[1]);
+	}
 	else
 		s_pro_two(fd[0]);
 	
