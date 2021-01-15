@@ -6,7 +6,7 @@
 /*   By: jsilance <jsilance@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/02 00:17:10 by jsilance          #+#    #+#             */
-/*   Updated: 2021/01/15 22:57:45 by jsilance         ###   ########.fr       */
+/*   Updated: 2021/01/16 00:00:25 by jsilance         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,13 +26,13 @@ static void	struct_init(t_sarg *t)
 
 static void	promptor()
 {
-	// char	*ptr;
+	char	*ptr;
 
-	// ptr = pather();
-	// write(1, "user:", 5);
-	// write(1, ptr, ft_strlen(ptr));
+	ptr = pather();
+	write(1, "user:", 5);
+	write(1, ptr, ft_strlen(ptr));
 	write(1, "$ ", 2);
-	// free(ptr);
+	free(ptr);
 }
 
 int			exiturn(t_sarg *t, int ext)
