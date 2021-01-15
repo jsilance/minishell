@@ -6,7 +6,7 @@
 /*   By: jsilance <jsilance@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/03 01:53:26 by jsilance          #+#    #+#             */
-/*   Updated: 2021/01/15 01:57:59 by jsilance         ###   ########.fr       */
+/*   Updated: 2021/01/15 22:33:09 by jsilance         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,10 +33,12 @@ static int	cmd_chekcer(char *str)
 			return (3);
 		else if (!ft_strcmp("export", str))
 			return (4);
-		else if (!ft_strcmp("env", str))
+		else if (!ft_strcmp("unset", str))
 			return (5);
-		else if (!ft_strcmp("help", str))
+		else if (!ft_strcmp("env", str))
 			return (6);
+		else if (!ft_strcmp("help", str))
+			return (7);
 	}
 	// return (ft_error(1, -1));
 	return (-1);
@@ -49,8 +51,9 @@ static int	cmd_chekcer(char *str)
 **	cmd_index  2 --> cd
 **	cmd_index  3 --> pwd
 **	cmd_index  4 --> export
-**	cmd_index  5 --> env
-**	cmd_index  6 --> help
+**	cmd_index  5 --> unset
+**	cmd_index  6 --> env
+**	cmd_index  7 --> help
 */
 
 static int	chain_maker(t_sarg *t)
@@ -69,7 +72,7 @@ static int	chain_maker(t_sarg *t)
 			continue ;
 		if (!ptr)
 			continue ;
-		printf("[%s]\n", ptr->content);
+		// printf("[%s]\n", ptr->content);
 		ft_cmd_lstadd_back(&t->cmd, ft_cmd_lstnew(NULL, NULL,
 			cmd_chekcer(ptr->content)));
 		cmd_ptr = ft_cmd_lstlast(t->cmd);
@@ -98,6 +101,8 @@ static int	chain_maker(t_sarg *t)
 			cmd_ptr->fd_pipe_out = piped[1];
 			if (!(ptr = ptr->next))
 				break ;
+			else
+				continue;
 		}
 		// security if too much of arguments
 		if (!(ptr = ptr->next))

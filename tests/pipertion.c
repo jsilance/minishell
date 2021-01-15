@@ -6,7 +6,7 @@
 /*   By: jsilance <jsilance@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/13 22:58:06 by jsilance          #+#    #+#             */
-/*   Updated: 2021/01/15 01:21:53 by jsilance         ###   ########.fr       */
+/*   Updated: 2021/01/15 23:36:55 by jsilance         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,34 +81,45 @@ int		main()
 {
     int     fd[2];
 	int		pid;
+	int		pid2;
 	char	*buf;
 	char	*ptr;
 	long	size;
 	// char	ptr[4];
 	
-	size = pathconf(".", _PC_PATH_MAX);
+	pid = chdir("..");
+	printf("[%d]\n", pid);
+	// size = pathconf(".", _PC_PATH_MAX);
 
-	if ((buf = (char *)malloc((size_t)size)) != NULL)
-    	ptr = getcwd(buf, (size_t)size);
-	free(buf);
+	// if ((buf = (char *)malloc((size_t)size)) != NULL)
+    // 	ptr = getcwd(buf, (size_t)size);
+	// free(buf);
 	// printf("[%s]\n", getcwd(buf, 50));
-	printf("%s\n", ptr);
-	free(ptr);
+	// printf("%s\n", ptr);
+	// free(ptr);
 
 	
-    pipe(fd);
-	pid = fork();
-	// printf("PID:[%d]\n", pid);
-	wait();
-	if (pid == 0)
-	{
-		s_pro_one(fd[1]);
-	}
-	else
-		s_pro_two(fd[0]);
+    // pipe(fd);
+	// pid = fork();
+	// printf("PID:  [%d]\n", pid);
+	// wait();
+	// pid2 = fork();
+	// printf("PID:	[%d]	PID2: [%d]\n", pid, pid2);
+
+	
+	// wait();
+	// if (pid == 0)
+	// {
+	// 	s_pro_one(fd[1]);
+	// }
+	// else
+	// 	s_pro_two(fd[0]);
 	
 	// write(fd[1], "flop", 4);
 	// read(fd[0], ptr, 4);
 	// ft_putstr_fd(ptr, 1);
+
+	
+	
 	return (0);
 }

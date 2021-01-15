@@ -6,7 +6,7 @@
 /*   By: jsilance <jsilance@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/09 02:29:21 by jsilance          #+#    #+#             */
-/*   Updated: 2021/01/15 01:37:30 by jsilance         ###   ########.fr       */
+/*   Updated: 2021/01/15 19:36:54 by jsilance         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,13 @@ typedef struct	s_cmd_lst
 {
 	int			cmd_index;
 	char		*flags;
-	
+
 	int			pipe_in;
 	int			fd_pipe_in;
-	
+
 	int			pipe_out;
 	int			fd_pipe_out;
-	
+
 	char		*str;
 	void		*next;
 }				t_cmd_lst;

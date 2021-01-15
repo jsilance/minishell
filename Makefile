@@ -6,7 +6,7 @@
 #    By: jsilance <jsilance@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/12/01 23:48:59 by jsilance          #+#    #+#              #
-#    Updated: 2021/01/15 01:46:27 by jsilance         ###   ########.fr        #
+#    Updated: 2021/01/15 18:17:01 by jsilance         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,9 +34,11 @@ SRC =	main.c libft/ft_atoi.c libft/ft_bzero.c libft/ft_calloc.c \
 		cmd_cl/ft_cmdlstadd_front.c cmd_cl/ft_cmdlstclear.c \
 		cmd_cl/ft_cmdlstdelone.c cmd_cl/ft_cmdlstiter.c \
 		cmd_cl/ft_cmdlstlast.c cmd_cl/ft_cmdlstnew.c cmd_cl/ft_cmdlstsize.c \
+		executor/executor.c debug/display.c \
 
 
 FLAGS =	-Wall -Wextra -Werror
+# FLAGS =	-Wall -Wextra -Werror -fsanitize=address
 
 OBJ =	$(SRC:.c=.o)
 

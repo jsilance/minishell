@@ -6,7 +6,7 @@
 /*   By: jsilance <jsilance@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/02 00:41:47 by jsilance          #+#    #+#             */
-/*   Updated: 2020/12/09 03:54:21 by jsilance         ###   ########.fr       */
+/*   Updated: 2021/01/15 19:18:53 by jsilance         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,5 +40,10 @@ typedef struct	s_sarg
 void			strtolst(t_sarg *t);
 int				parser(t_sarg *t);
 int				ft_error(int error, int ret_val);
+int				executor(t_sarg *t);
+int				exiturn(t_sarg *t, int exit);
+char			*pather();
+
+void			dbg(t_sarg *t);
 
 #endif
