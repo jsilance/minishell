@@ -6,7 +6,7 @@
 /*   By: jsilance <jsilance@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/02 00:17:10 by jsilance          #+#    #+#             */
-/*   Updated: 2021/01/15 02:14:58 by jsilance         ###   ########.fr       */
+/*   Updated: 2021/01/15 02:19:32 by jsilance         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ static void	promptor()
 	size = pathconf(".", _PC_PATH_MAX);
 	if ((buf = (char *)malloc((size_t)size)) != NULL)
     	ptr = getcwd(buf, (size_t)size);
-	// free(buf);
+	free(buf);
 	write(1, "user:", 5);
 	write(1, ptr, size);
 	write(1, "$ ", 2);
