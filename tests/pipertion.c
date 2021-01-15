@@ -6,7 +6,7 @@
 /*   By: jsilance <jsilance@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/13 22:58:06 by jsilance          #+#    #+#             */
-/*   Updated: 2021/01/15 00:11:02 by jsilance         ###   ########.fr       */
+/*   Updated: 2021/01/15 01:21:53 by jsilance         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ int		s_pro_two(int fd)
 	return (0);
 }
 
-int		s_pro_one(int pid, int fd)
+int		s_pro_one(int fd)
 {
 	int		i;
 	int		count;
@@ -67,13 +67,11 @@ int		s_pro_one(int pid, int fd)
 
 	i = 0;
 	count = 0;
-	if (pid != 0)
-		i = 6;
-	while (count++ <= 5)
+	while (count++ < 5)
 	{
 		str = ft_itoa(i++);
 		write(fd, str, ft_strlen(str));
-		printf("test1 %s\n", str);
+		// printf("test1 %s\n", str);
 		free(str);
 	}
 	return (0);
@@ -83,17 +81,28 @@ int		main()
 {
     int     fd[2];
 	int		pid;
+	char	*buf;
+	char	*ptr;
+	long	size;
 	// char	ptr[4];
+	
+	size = pathconf(".", _PC_PATH_MAX);
+
+	if ((buf = (char *)malloc((size_t)size)) != NULL)
+    	ptr = getcwd(buf, (size_t)size);
+	free(buf);
+	// printf("[%s]\n", getcwd(buf, 50));
+	printf("%s\n", ptr);
+	free(ptr);
+
 	
     pipe(fd);
 	pid = fork();
-	printf("PID:[%d]\n", pid);
+	// printf("PID:[%d]\n", pid);
 	wait();
 	if (pid == 0)
 	{
-		pid = fork();
-		printf("PID:[%d]\n", pid);
-		s_pro_one(pid, fd[1]);
+		s_pro_one(fd[1]);
 	}
 	else
 		s_pro_two(fd[0]);

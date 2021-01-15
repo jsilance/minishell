@@ -6,7 +6,7 @@
 #    By: jsilance <jsilance@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/12/01 23:48:59 by jsilance          #+#    #+#              #
-#    Updated: 2020/12/09 03:03:25 by jsilance         ###   ########.fr        #
+#    Updated: 2021/01/15 01:46:27 by jsilance         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -60,7 +60,7 @@ clean:
 fclean:	clean
 		@/bin/rm -f ${NAME}
 
-rerun:	re clean
+test:	re clean
 		./${NAME}
 
 .PHONY: all re clean fclean rerun

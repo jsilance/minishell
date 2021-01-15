@@ -6,7 +6,7 @@
 /*   By: jsilance <jsilance@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/03 01:53:26 by jsilance          #+#    #+#             */
-/*   Updated: 2020/12/15 05:15:57 by jsilance         ###   ########.fr       */
+/*   Updated: 2021/01/15 01:57:59 by jsilance         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,10 @@ static int	chain_maker(t_sarg *t)
 {
 	t_list		*ptr;
 	t_cmd_lst	*cmd_ptr;
-
+	int			piped[2];
+	
+	piped[0] = -1;
+	piped[1] = -1;
 	ptr = t->arg_lst;
 	cmd_ptr = NULL;
 	while(ptr)
@@ -81,9 +84,18 @@ static int	chain_maker(t_sarg *t)
 		cmd_ptr->str = ft_strdup(ptr->content);
 		if (!(ptr = ptr->next) || !ft_strcmp(ptr->content, ";"))
 			continue ;
+		if (piped[0] > -1)
+		{
+			cmd_ptr->fd_pipe_in = piped[0];
+			cmd_ptr->pipe_in = 1;
+			piped[0] = -1;
+		}
 		if (ptr && !ft_strcmp(ptr->content, "|"))
 		{
-			cmd_ptr->pipe_next = 1;
+			printf("}[BIM]{\n");
+			pipe(piped);
+			cmd_ptr->pipe_out = 1;
+			cmd_ptr->fd_pipe_out = piped[1];
 			if (!(ptr = ptr->next))
 				break ;
 		}

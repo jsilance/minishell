@@ -6,7 +6,7 @@
 /*   By: jsilance <jsilance@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/10 02:44:47 by jsilance          #+#    #+#             */
-/*   Updated: 2020/12/15 04:05:20 by jsilance         ###   ########.fr       */
+/*   Updated: 2021/01/15 01:40:07 by jsilance         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,10 @@ t_cmd_lst	*ft_cmd_lstnew(void *str, void *flag, int index)
 	ptr->str = str;
 	ptr->flags = flag;
 	ptr->cmd_index = index;
-	ptr->pipe_next = 0;
+	ptr->pipe_in = 0;
+	ptr->fd_pipe_in = -1;
+	ptr->pipe_out = 0;
+	ptr->fd_pipe_out = -1;
 	ptr->next = NULL;
 	return (ptr);
 }
