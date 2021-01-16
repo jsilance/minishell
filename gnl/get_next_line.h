@@ -6,7 +6,7 @@
 /*   By: jsilance <jsilance@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/02 00:36:40 by jsilance          #+#    #+#             */
-/*   Updated: 2020/12/02 01:34:58 by jsilance         ###   ########.fr       */
+/*   Updated: 2021/01/16 11:17:47 by jsilance         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,9 @@
 #  define BUFFER_SIZE 8
 # endif
 
-# define OPEN_MAX 256
+# ifndef OPEN_MAX
+#  define OPEN_MAX 256
+# endif
 
 # include "../main.h"
 
