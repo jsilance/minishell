@@ -6,7 +6,7 @@
 /*   By: jsilance <jsilance@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/13 22:58:06 by jsilance          #+#    #+#             */
-/*   Updated: 2021/01/15 23:36:55 by jsilance         ###   ########.fr       */
+/*   Updated: 2021/01/16 21:31:41 by jsilance         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@
 **	doc: https://www.geeksforgeeks.org/dup-dup2-linux-system-call/
 */
 
+/*
 int		s_pro_two(int fd)
 {
 	int		i;
@@ -76,6 +77,7 @@ int		s_pro_one(int fd)
 	}
 	return (0);
 }
+*/
 
 int		main()
 {
@@ -88,7 +90,7 @@ int		main()
 	// char	ptr[4];
 	
 	pid = chdir("..");
-	printf("[%d]\n", pid);
+	printf("[%d]\n\n", pid);
 	// size = pathconf(".", _PC_PATH_MAX);
 
 	// if ((buf = (char *)malloc((size_t)size)) != NULL)
@@ -98,14 +100,22 @@ int		main()
 	// printf("%s\n", ptr);
 	// free(ptr);
 
+	close(-1);
 	
     // pipe(fd);
-	// pid = fork();
-	// printf("PID:  [%d]\n", pid);
-	// wait();
-	// pid2 = fork();
-	// printf("PID:	[%d]	PID2: [%d]\n", pid, pid2);
-
+	pid = fork();
+	if (!pid)
+		printf("[%d]\n", pid);
+	if (pid != 0)
+	{
+		pid2 = fork();
+		if (pid2)
+			printf("[%d]\n", pid2);
+		else
+			printf("[%d]\n", pid);
+		return (0);
+	}
+	
 	
 	// wait();
 	// if (pid == 0)

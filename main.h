@@ -6,7 +6,7 @@
 /*   By: jsilance <jsilance@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/02 00:41:47 by jsilance          #+#    #+#             */
-/*   Updated: 2021/01/15 19:18:53 by jsilance         ###   ########.fr       */
+/*   Updated: 2021/01/16 20:22:51 by jsilance         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ typedef struct	s_sarg
 
 	t_list		*arg_lst;
 	t_cmd_lst	*cmd;
+	t_list		*pid_lst;
 
 	int			ret_val;
 }				t_sarg;

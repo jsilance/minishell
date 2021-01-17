@@ -6,7 +6,7 @@
 /*   By: jsilance <jsilance@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/09 02:29:21 by jsilance          #+#    #+#             */
-/*   Updated: 2021/01/15 19:36:54 by jsilance         ###   ########.fr       */
+/*   Updated: 2021/01/17 00:49:57 by jsilance         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,10 @@ typedef struct	s_cmd_lst
 	int			pipe_out;
 	int			fd_pipe_out;
 
-	char		*str;
+	t_list		*str;
+	
+	int			pid;
+	
 	void		*next;
 }				t_cmd_lst;
 

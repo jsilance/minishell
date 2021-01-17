@@ -6,13 +6,13 @@
 /*   By: jsilance <jsilance@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/03 01:53:26 by jsilance          #+#    #+#             */
-/*   Updated: 2021/01/15 22:33:09 by jsilance         ###   ########.fr       */
+/*   Updated: 2021/01/17 04:47:15 by jsilance         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../main.h"
 
-static int	cmd_arg_check(char *str)
+static int	cmd_flag_check(char *str)
 {
 	if (!ft_strcmp("-n", str))
 		return (1);
@@ -45,6 +45,24 @@ static int	cmd_chekcer(char *str)
 }
 
 /*
+**	Peut-etre ajouter un sep index.
+*/
+
+static int	sep_checker(char *str)
+{
+	if (!ft_strcmp(str, ">") || 
+		!ft_strcmp(str, ">>") ||
+		!ft_strcmp(str, "<") ||
+		!ft_strcmp(str, "<<") ||
+		!ft_strcmp(str, "|") ||
+		!ft_strcmp(str, "||") ||
+		!ft_strcmp(str, ";") ||
+		!ft_strcmp(str, "&&"))
+		return (1);
+	return (0);
+}
+
+/*
 **	cmd_index -1 --> error
 **	cmd_index  0 --> exit
 **	cmd_index  1 --> echo
@@ -72,30 +90,25 @@ static int	chain_maker(t_sarg *t)
 			continue ;
 		if (!ptr)
 			continue ;
-		// printf("[%s]\n", ptr->content);
 		ft_cmd_lstadd_back(&t->cmd, ft_cmd_lstnew(NULL, NULL,
 			cmd_chekcer(ptr->content)));
 		cmd_ptr = ft_cmd_lstlast(t->cmd);
-		if (!(ptr = ptr->next) || !ft_strcmp(ptr->content, ";"))
-			continue ;
-		if (ptr && cmd_ptr->cmd_index == 1 && cmd_arg_check(ptr->content))
-		{
-			cmd_ptr->flags = ft_strdup(ptr->content);
-			if (!(ptr = ptr->next) || !ft_strcmp(ptr->content, ";"))
-				break ;
-		}
-		cmd_ptr->str = ft_strdup(ptr->content);
-		if (!(ptr = ptr->next) || !ft_strcmp(ptr->content, ";"))
-			continue ;
 		if (piped[0] > -1)
 		{
 			cmd_ptr->fd_pipe_in = piped[0];
 			cmd_ptr->pipe_in = 1;
 			piped[0] = -1;
 		}
+		if (!(ptr = ptr->next) || !ft_strcmp(ptr->content, ";"))
+			continue ;
+		if (ptr && cmd_ptr->cmd_index == 1 && cmd_flag_check(ptr->content))
+		{
+			cmd_ptr->flags = ft_strdup(ptr->content);
+			if (!(ptr = ptr->next) || !ft_strcmp(ptr->content, ";"))
+				break ;
+		}
 		if (ptr && !ft_strcmp(ptr->content, "|"))
 		{
-			printf("}[BIM]{\n");
 			pipe(piped);
 			cmd_ptr->pipe_out = 1;
 			cmd_ptr->fd_pipe_out = piped[1];
@@ -104,16 +117,31 @@ static int	chain_maker(t_sarg *t)
 			else
 				continue;
 		}
-		// security if too much of arguments
-		if (!(ptr = ptr->next))
-			break ;
+		if (ptr && !sep_checker(ptr->content))
+			while(ptr && !sep_checker(ptr->content))
+			{
+				ft_lstadd_back(&cmd_ptr->str, ft_lstnew(ft_strdup(ptr->content)));
+				if (!(ptr = ptr->next))
+					break ;
+			}
+		else
+			if (!(ptr = ptr->next) || !ft_strcmp(ptr->content, ";"))
+				continue ;
+		if (ptr && !ft_strcmp(ptr->content, "|"))
+		{
+			pipe(piped);
+			cmd_ptr->pipe_out = 1;
+			cmd_ptr->fd_pipe_out = piped[1];
+			if (!(ptr = ptr->next))
+				break ;
+			else
+				continue;
+		}
+		if (!ptr || !ft_strcmp(ptr->content, ";") || !(ptr = ptr->next))
+			continue ;
 	}
 	return (0);
 }
-
-/*
-**	Temporary exit
-*/
 
 int			parser(t_sarg *t)
 {

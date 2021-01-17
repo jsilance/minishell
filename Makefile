@@ -6,7 +6,7 @@
 #    By: jsilance <jsilance@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/12/01 23:48:59 by jsilance          #+#    #+#              #
-#    Updated: 2021/01/15 18:17:01 by jsilance         ###   ########.fr        #
+#    Updated: 2021/01/16 15:43:03 by jsilance         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,8 +37,8 @@ SRC =	main.c libft/ft_atoi.c libft/ft_bzero.c libft/ft_calloc.c \
 		executor/executor.c debug/display.c \
 
 
-FLAGS =	-Wall -Wextra -Werror
-# FLAGS =	-Wall -Wextra -Werror -fsanitize=address
+# FLAGS =	-Wall -Wextra -Werror
+FLAGS =	-Wall -Wextra -Werror -fsanitize=address
 
 OBJ =	$(SRC:.c=.o)
 
