@@ -6,7 +6,7 @@
 /*   By: jsilance <jsilance@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/15 13:15:47 by jsilance          #+#    #+#             */
-/*   Updated: 2021/01/17 04:55:57 by jsilance         ###   ########.fr       */
+/*   Updated: 2021/01/21 23:44:16 by jsilance         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,6 @@ static void	fork_piper(t_cmd_lst *ptr_cmd, t_sarg *t)
 	int	pid;
 
 	pid = fork();
-	// printf("FORK[%d]\n", pid);
 	if (pid)
 	{
 		ptr_cmd = ptr_cmd->next;
@@ -96,8 +95,6 @@ static void	fork_piper(t_cmd_lst *ptr_cmd, t_sarg *t)
 	}
 	else
 		ptr_cmd->pid = pid;
-	// printf("pid:[%d]\t\tpipe fd in:[%d]\t\tpipe fd out:[%d]\n", ptr_cmd->pid, ptr_cmd->fd_pipe_in, ptr_cmd->fd_pipe_out);
-	// fflush(stdout);
 	wait(0);
 	commander_exec(ptr_cmd, t);
 	if (!pid)
